@@ -63,7 +63,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun)
     return matrix
 }
 
-var matrix = matrixGenerator(30, 40, 15, 5, 5, 8)
+var matrix = matrixGenerator(30, 30, 20, 25, 15, 10)
 var side = 25
 //
 
@@ -109,7 +109,7 @@ function draw() {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
-            var tbot = side - side * 0.1
+            var tbot = side-side * 0.1
             textSize(tbot)
             if (matrix[y][x] == 1) {
                 fill("green")
