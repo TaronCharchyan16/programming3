@@ -63,7 +63,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun)
     return matrix
 }
 
-var matrix = matrixGenerator(30, 30, 20, 25, 15, 10)
+var matrix = matrixGenerator(35, 35, 25, 30, 20, 15)
 var side = 25
 //
 

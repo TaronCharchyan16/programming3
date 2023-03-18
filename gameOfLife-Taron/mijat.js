@@ -1,4 +1,5 @@
-class Mijat extends LivingCreature{
+let LivingCreature = require ("./LivingCreature")
+module.exports = class Mijat extends LivingCreature{
     constructor(x, y) {
         super(x,y)
        
