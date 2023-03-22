@@ -1,4 +1,4 @@
-function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun) {
+function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun, cat) {
     var matrix = []
 
     for (let i = 0; i < matrixSize; i++) {
@@ -58,12 +58,20 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun)
 
 
     }
+    for (let i = 0; i < cat; i++) {
 
+        var x = Math.floor(Math.random() * matrixSize)
+        var y = Math.floor(Math.random() * matrixSize)
+
+        matrix[y][x] = 6
+
+
+    }
 
     return matrix
 }
 
-var matrix = matrixGenerator(35, 35, 25, 30, 20, 15)
+var matrix = matrixGenerator(35, 35, 25, 30, 20, 15, 10)
 var side = 25
 //
 
@@ -72,7 +80,7 @@ var grassEaterArr = []
 var predatorArr = []
 var mijatArr = []
 var trchunArr = []
-
+var catArr = []
 
 
 function setup() {
@@ -97,7 +105,9 @@ function setup() {
             } else if (matrix[y][x] == 5) {
                 var trch = new Trchun(x, y)
                 trchunArr.push(trch)
-            }
+            }else if (matrix[y][x] == 6) {
+                var trch = new Cat(x, y)
+                catArr.push(ct)
         }
     }
 
@@ -131,6 +141,10 @@ function draw() {
                 fill("black")
                 rect(x * side, y * side,side,side)
                 text('🦜',x * side, y * side + tbot)
+            }else if (matrix[y][x] == 5) {
+                fill("orange")
+                rect(x * side, y * side,side,side)
+                text('🦜',x * side, y * side + tbot)
             }
             else {
                 fill("gray")
@@ -158,4 +172,25 @@ function draw() {
     for (let i in trchunArr) {
         trchunArr[i].eat()
     }
+    for (let i in catArr) {
+        catArr[i].eat()
+    }
+}
+
+function main() {
+    var socket = io();
+    var chatDiv = document.getElementById('chat');
+    var input = document.getElementById('message');
+    var button = document.getElementById('submit');
+    
+    function handleSubmit() {
+    var val = input.value;
+    if (val != "") {
+    socket.emit("send message", val);
+    }
+    }
+    button.onclick = handleSubmit;
+    socket.on("display message",handleMessage)
+}
+window.onload = main 
 }
