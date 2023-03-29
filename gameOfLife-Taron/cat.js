@@ -17,6 +17,8 @@ module.exports = class Cat extends LivingCreature{
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+
+        
     }
     chooseCell(char) {
         this.getNewCoordinates();
