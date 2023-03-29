@@ -23,7 +23,14 @@ module.exports = class Cat extends LivingCreature{
         return super.chooseCell(char);
     }
 
+
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+        }
     
+        
      mul() {
         let emptyCell = this.chooseCell(0);
         let newCell = random(emptyCell)
