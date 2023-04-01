@@ -3,26 +3,14 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-var messages = [];
 app.use(express.static("."));
 app.get('/', function (req, res) {
-    res.redirect('index.html');
+res.redirect('index.html');
 });
 
-server.listen(3000, function () {
-    console.log("server okay")
-});
-
-// io.on('connection', function (socket) {
-//     for (var i in messages) {
-//         socket.emit("display message", messages[i]);
-//     }
-//     socket.on("send message", function (data) {
-//         messages.push(data);
-//         io.sockets.emit("display message", data);
-//     });
-// });
-
+server.listen(3000, function() {
+})
+console.log("server okay")
 function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun, cat) {
     var matrix = []
 
@@ -93,6 +81,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, mijat, trchun,
 
     }
 io.emit ("send matrix",matrix) 
+
     return matrix
 }
 
@@ -104,6 +93,7 @@ predatorArr = []
 mijatArr = []
 trchunArr = []
 catArr = []
+const Grass = require("./grass")
 
 const Predator = require("./predator")
 const GrassEater = require("./grassEater")
@@ -131,14 +121,14 @@ function creatureObject() {
                 var trch = new Trchun(x, y)
                 trchunArr.push(trch)
             } else if (matrix[y][x] == 6) {
-                var trch = new Cat(x, y)
+                var ct = new Cat(x, y)
                 catArr.push(ct)
             }
         }
 
     }
 }
-
+creatureObject()
 
 function gameMove() {
     for (let i in grassArr) {
@@ -162,7 +152,8 @@ function gameMove() {
     for (let i in catArr) {
         catArr[i].eat()
     }
+    io.emit("send matrix",matrix)
 }
 
-io.emit("send matrix",matrix)
-setInterval(gameMove, 1000)
+
+setInterval(gameMove,1000)

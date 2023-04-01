@@ -72,10 +72,10 @@
 // }
 
 // var matrix = matrixGenerator(35, 35, 25, 30, 20, 15, 10)
-var socket = io() 
+// var socket = io() 
 var side = 25
 // 
-
+const socket = io()
 // var grassArr = []
 // var grassEaterArr = []
 // var predatorArr = []

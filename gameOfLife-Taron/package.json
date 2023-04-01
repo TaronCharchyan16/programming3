@@ -1,18 +1,17 @@
 {
-  "name": "gameoflife-taron",
+  "name": "gameOfLife-Taron",
   "version": "1.0.0",
+  "description": "",
   "main": "LivingCreature.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Taron",
-  "license": "ISC",
   "keywords": [],
-  "description": "",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "save": "^2.9.0",
     "socket.io": "^4.6.1"
   }
 }

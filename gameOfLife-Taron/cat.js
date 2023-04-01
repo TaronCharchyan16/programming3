@@ -1,7 +1,7 @@
 let LivingCreature = require ("./LivingCreature")
 module.exports = class Cat extends LivingCreature{
-    constructor(x, y) {
-        super(x,)
+    constructor(x,y) {
+        super(x,y)
         
         this.energy = 20;
         this.directions = [];
@@ -34,14 +34,13 @@ module.exports = class Cat extends LivingCreature{
     
         
      mul() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-   console.log(newCell);
+        //let emptyCell = this.chooseCell(0);
+        let newCell = this.random(0);
         if (newCell && this.energy > 3) {
             let newX = newCell[0];
             let newY = newCell[1];
 
-            let trch = new Cat(newX, newY);
+            let ct = new Cat(newX, newY);
             matrix[newY][newX] = 4;
             catArr.push(ct);
 
@@ -52,8 +51,8 @@ module.exports = class Cat extends LivingCreature{
 
 
     eat() {
-        let emptyCell = this.chooseCell(3);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(3);
+        let newCell = this.random(0)
 
         if (newCell) {
             this.energy += 4;
@@ -86,8 +85,8 @@ module.exports = class Cat extends LivingCreature{
     }
 
     move() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(0);
+        let newCell = this.random(0)
 
         if (newCell) {
             let newX = newCell[0];

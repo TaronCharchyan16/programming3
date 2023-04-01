@@ -1,6 +1,6 @@
 let LivingCreature = require ("./LivingCreature")
 module.exports = class Mijat extends LivingCreature{
-    constructor(x, y) {
+    constructor(x,y) {
         super(x,y)
        
         this.energy = 30;
@@ -25,11 +25,18 @@ module.exports = class Mijat extends LivingCreature{
         return super.chooseCell(char);
     }
 
+
+    random(ch) {
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random() * found.length)
+        return found[result];
+    }
+
      //բազմանալ
      mul() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-   console.log(newCell);
+        //let emptyCell = this.chooseCell(0);
+        let newCell = this.random(0)
+ ;
         if (newCell && this.energy > 4) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -45,8 +52,8 @@ module.exports = class Mijat extends LivingCreature{
 
 //ուտել
     eat() {
-        let emptyCell = this.chooseCell(3);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(3);
+        let newCell = this.random(0)
 
         if (newCell) {
             this.energy += 4;
@@ -80,8 +87,8 @@ module.exports = class Mijat extends LivingCreature{
 
     //քայլել
     move() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(0);
+        let newCell = this.random(0)
 
         if (newCell) {
             let newX = newCell[0];

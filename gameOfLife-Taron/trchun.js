@@ -1,7 +1,7 @@
 let LivingCreature = require("./LivingCreature")
 module.exports = class Trchun extends LivingCreature {
     constructor(x, y) {
-        super(x,)
+        super(x,y)
 
         this.energy = 30;
         this.directions = [];
@@ -33,7 +33,6 @@ module.exports = class Trchun extends LivingCreature {
 
     mul() {
         // let emptyCell = this.chooseCell(0);
-        // let newCell = random(emptyCell)
         let newCell = this.random(0)
         console.log(newCell);
         if (newCell && this.energy > 4) {
@@ -51,8 +50,8 @@ module.exports = class Trchun extends LivingCreature {
 
 
     eat() {
-        let emptyCell = this.chooseCell(3);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(3);
+        let newCell = this.random(0)
 
         if (newCell) {
             this.energy += 4;
@@ -85,8 +84,8 @@ module.exports = class Trchun extends LivingCreature {
     }
 
     move() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        //let emptyCell = this.chooseCell(0);
+        let newCell = this.random(0)
 
         if (newCell) {
             let newX = newCell[0];
